@@ -1,14 +1,13 @@
-
 import { useState } from 'react';
-import './App.css';
-function App () {
+import './Age.css';
+function Age () {
     var [Dob,setDob] = useState('');
-    var [currentdate,setcurrentdate] = useState('');
+    var [today,setToday] = useState('');
     var [AgeData,setAgeData] = useState('');
 
     const AgeCal = ()=>{
         var DobDate = new Date(Dob);
-        var todayDate = new Date(currentdate);
+        var todayDate = new Date(today);
         const MiliSec = todayDate - DobDate;
         const Sec = MiliSec / 1000;
         const Min = Sec / 60;
@@ -22,43 +21,55 @@ function App () {
     }
  
   return (
-    <div className='flex'>
-      <div className='main' >
-      
+    <div>
+      <div className='box1' style={{background:'white'}}>
+        <div>
+          <h1>Age Calculator</h1>
+        </div>
         <div className='Row'>
           <span>Enter DOB :</span>
           <input type='date' min='2000-01-01' max='2005-12-31' onChange={(e)=>{setDob(e.target.value)}} />
         </div>
         <div className='Row'>
           <span>Enter Today :</span>
-          <input type='date' onChange={(e)=>{setcurrentdate(e.target.value)}} />
+          <input type='date' onChange={(e)=>{setToday(e.target.value)}} />
         </div>
         <button className='AgeBtn' onClick={()=>{AgeCal()}}>Click To Get Age</button>
       </div>
-      <table className="main2" >
-      
+      <table className="box2" >
+      <thead>
+        <tr >
+            <th colSpan={2}><h2>You Already Lived...!</h2></th>
+        </tr>     
+      </thead>
         <tbody>
             <tr>
-                <td>Years :{AgeData.Years}</td>             
+                <td>Years :</td>
+                <td>{AgeData.Years}</td>
             </tr>
             <tr>
-                <td>Month :{AgeData.Month}</td>                
+                <td>Month :</td>
+                <td>{AgeData.Month} </td>
             </tr>
             <tr>
-                <td>Weeks :{AgeData.Week}</td>
+                <td>Weeks :</td>
+                <td>{AgeData.Week}</td>
             </tr>
             <tr>
-                <td>Days :{AgeData.Days}</td>
+                <td>Days :</td>
+                <td>{AgeData.Days}</td>
             </tr>
             <tr>
-                <td>Hours :{AgeData.Hours}</td>
+                <td>Hours :</td>
+                <td>{AgeData.Hours}</td>
             </tr>
             <tr>
-                <td>Minutes :{AgeData.Min}</td>
+                <td>Minutes :</td>
+                <td>{AgeData.Min}</td>
             </tr>
             <tr>
-                <td>Seconds :{AgeData.Sec}</td>
-               
+                <td>Seconds :</td>
+                <td>{AgeData.Sec}</td>
             </tr>
         </tbody>
         
@@ -66,4 +77,4 @@ function App () {
     </div>
   )
 }
-export default App
+export default Age
